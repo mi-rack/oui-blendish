@@ -2048,7 +2048,7 @@ void bndIcon(NVGcontext *ctx, float x, float y, int iconid) {
 
 void bndDropShadow(NVGcontext *ctx, float x, float y, float w, float h,
     float r, float feather, float alpha) {
-    
+    return;
     nvgBeginPath(ctx);
     y += feather;
     h -= feather;
