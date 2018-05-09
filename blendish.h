@@ -1603,19 +1603,19 @@ void bndScrollBar(NVGcontext *ctx,
     float x, float y, float w, float h, BNDwidgetState state, 
     float offset, float size) {
     
-    bndBevelInset(ctx,x,y,w,h,
-        BND_SCROLLBAR_RADIUS, BND_SCROLLBAR_RADIUS);
-    bndInnerBox(ctx,x,y,w,h,
-        BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
-        BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
-        bndOffsetColor(
-            bnd_theme.scrollBarTheme.innerColor, 3*bnd_theme.scrollBarTheme.shadeDown),
-        bndOffsetColor(
-            bnd_theme.scrollBarTheme.innerColor, 3*bnd_theme.scrollBarTheme.shadeTop));
-    bndOutlineBox(ctx,x,y,w,h,
-        BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
-        BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
-        bndTransparent(bnd_theme.scrollBarTheme.outlineColor));
+    // bndBevelInset(ctx,x,y,w,h,
+    //     BND_SCROLLBAR_RADIUS, BND_SCROLLBAR_RADIUS);
+    // bndInnerBox(ctx,x,y,w,h,
+    //     BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
+    //     BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
+    //     bndOffsetColor(
+    //         bnd_theme.scrollBarTheme.innerColor, 3*bnd_theme.scrollBarTheme.shadeDown),
+    //     bndOffsetColor(
+    //         bnd_theme.scrollBarTheme.innerColor, 3*bnd_theme.scrollBarTheme.shadeTop));
+    // bndOutlineBox(ctx,x,y,w,h,
+    //     BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
+    //     BND_SCROLLBAR_RADIUS,BND_SCROLLBAR_RADIUS,
+    //     bndTransparent(bnd_theme.scrollBarTheme.outlineColor));
     
     NVGcolor itemColor = bndOffsetColor(
         bnd_theme.scrollBarTheme.itemColor,
@@ -2048,7 +2048,7 @@ void bndIcon(NVGcontext *ctx, float x, float y, int iconid) {
 
 void bndDropShadow(NVGcontext *ctx, float x, float y, float w, float h,
     float r, float feather, float alpha) {
-    return;
+#if !(defined(__arm__) || defined(__aarch64__))
     nvgBeginPath(ctx);
     y += feather;
     h -= feather;
@@ -2072,6 +2072,7 @@ void bndDropShadow(NVGcontext *ctx, float x, float y, float w, float h,
         nvgRGBAf(0,0,0,alpha*alpha), 
         nvgRGBAf(0,0,0,0)));
     nvgFill(ctx);
+#endif
 }
 
 void bndInnerBox(NVGcontext *ctx, float x, float y, float w, float h, 
