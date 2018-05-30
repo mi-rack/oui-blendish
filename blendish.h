@@ -1148,7 +1148,11 @@ static double bnd_fmax ( double a, double b )
 ////////////////////////////////////////////////////////////////////////////////
 
 // default text size
+#ifdef TOUCH
+#define BND_LABEL_FONT_SIZE 15
+#else
 #define BND_LABEL_FONT_SIZE 13
+#endif
 
 // default text padding in inner box
 #define BND_PAD_LEFT 8
@@ -1225,7 +1229,11 @@ static double bnd_fmax ( double a, double b )
 #define BND_MAX_ROWS 32
 
 // text distance from bottom
+#ifdef TOUCH
+#define BND_TEXT_PAD_DOWN 6
+#else
 #define BND_TEXT_PAD_DOWN 7
+#endif
 
 // stroke width of wire outline
 #define BND_NODE_WIRE_OUTLINE_WIDTH 4
